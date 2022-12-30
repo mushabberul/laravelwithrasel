@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +35,9 @@ Route::middleware('auth')->group(function () {
     //post route
     Route::post('/add-post', [PostController::class, 'add'])->name('addPost');
     Route::get('/posts', [PostController::class, 'index'])->name('posts');
+    Route::get('/edit-post/{id}', [PostController::class, 'edit'])->name('edit');
+    Route::put('/update/{id}', [PostController::class, 'update'])->name('update');
+    Route::delete('/delete/{id}', [PostController::class, 'delete'])->name('delete');
 });
 
 require __DIR__ . '/auth.php';
