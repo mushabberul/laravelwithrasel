@@ -30,9 +30,9 @@
                         </div>
                         <div class="flex-1">
                             <ul>
-                                {{-- @foreach ($posts as $post)
+                                @foreach ($posts as $post)
                                     <li>{{ $post->title }}</li>
-                                @endforeach --}}
+                                @endforeach
                             </ul>
                         </div>
                     </div>

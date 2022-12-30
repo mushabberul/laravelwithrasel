@@ -25,11 +25,11 @@ class PostController extends Controller
         $post->desc = $request->desc;
         $post->save();
 
-        return 'Successfully add ' . $post->id;
+        return redirect()->route('posts');
     }
     public function index()
     {
         $posts = Post::all();
-        return view('dashboard', compact('posts'));
+        return view('posts', compact('posts'));
     }
 }
