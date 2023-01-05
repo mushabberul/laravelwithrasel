@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Post;
+use App\Notifications\Create_Post;
 use Flasher\Prime\FlasherInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -26,6 +28,12 @@ class PostController extends Controller
         $post->date = now();
         $post->desc = $request->desc;
         $post->save();
+
+        $user = Auth::user();
+        // dd($user);
+
+        $user->notify(new Create_Post($post));
+
 
         flash('Post add successfully!👌', 'success');
         return redirect()->route('posts');
